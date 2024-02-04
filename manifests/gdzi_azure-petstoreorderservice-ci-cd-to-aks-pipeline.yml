@@ -88,7 +88,7 @@ stages:
             displayName: Deploy to Kubernetes cluster
             inputs:
               action: deploy
-              kubernetesServiceConnection: azurepetstoreservices-akscluster
+              kubernetesServiceConnection: gdzi-azurepetstore-akscluster-ingress-petstoreservices
               namespace: ingress-petstoreservices
               manifests: |
                 $(Pipeline.Workspace)/manifests/petstoreorderservice-deployment-everything-enabled.yml
