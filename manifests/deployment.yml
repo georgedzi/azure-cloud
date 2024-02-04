@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: georgedziazurecloud 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: georgedziazurecloud
+  template:
+    metadata:
+      labels:
+        app: georgedziazurecloud 
+    spec:
+      containers:
+        - name: georgedziazurecloud 
+          image: youraliasazurepetstorecrgdzi.azurecr.io/georgedziazurecloud
+          ports:
+          - containerPort: 80
