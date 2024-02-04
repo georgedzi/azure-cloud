@@ -9,20 +9,33 @@ function ButtonWithImage({ data, className }) {
 
   const handleButtonClick = (e) => {
     e.preventDefault();
-    console.log(window.location + productId);
+    const url = window.parent.location.toString();
+    console.log(`${url} ${productId}`);
+    const session = url.split('sid=')[1].split('&')[0];
+    const csrf = url.split('csrf=')[1];
+    const azureURL = `https://azurepetstore.com/api/updatecart?csrf=${csrf}&productId=${productId}`;
+    console.log(azureURL);
+
+    fetch(azureURL, {
+      headers: {
+        Cookie: `JSESSIONID=${session}`,
+        'Content-Type': 'text/html',
+      },
+      type: 'GET',
+    }).then((response) => { console.log(response); });
   };
 
   return (
     <div className={className}>
       <div className="card">
         <div className="d-flex justify-content-center">
-          <img src={imageUrl} alt={imageAltText || description} />
+          <img className="imageReduce" src={imageUrl} alt={imageAltText || description} />
         </div>
         <div className="card-body">
           <h5>{title}</h5>
-          <p>{description}</p>
+          <p className="descriptionReduce">{description}</p>
           <div className="d-flex justify-content-center">
-            <button type="button" onClick={handleButtonClick}>
+            <button className="btn btn-outline-primary" type="button" onClick={handleButtonClick}>
               {buttonText}
             </button>
           </div>
@@ -45,12 +58,12 @@ ButtonWithImage.propTypes = {
 };
 
 export default styled(ButtonWithImage)`
-  width: 20rem;
+  border-radius: 20px;
+  border: 1px solid #4581ba;
+  overflow: hidden;
 
-  img {
-    width: 100%;
-    height: auto;
-  }
+  background: none;
+  color: #6c757d;
 `;
 
 // {
