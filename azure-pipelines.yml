@@ -11,12 +11,12 @@ resources:
 variables:
 
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: 'STORE THIS VALUE OFF'
+  dockerRegistryServiceConnection: '33f9f787-dde0-483a-9259-3f1137cd6038'
   imageRepository: 'petstorepetservice'
   containerRegistry: 'youraliasazurepetstorecrgdzi.azurecr.io'
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
-  imagePullSecret: 'STORE THIS VALUE OFF'
+  imagePullSecret: 'youraliasazurepetstorecrgdzi2341-auth'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
